@@ -7,6 +7,26 @@
 export function getGreatestDiscoveryYear(data) {
   // Your code goes here...
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
+  let years = data.asteroids.map(item => {
+    return item.discoveryYear;
+  });
+  const obj = {};
+  let max = 0;
+  let finalYear = null;
+  for (let year of years) {
+    if (obj[year]) {
+      obj[year]++;
+    } else {
+      obj[year] = 1;
+    }
+  }
+  for (let x in obj) {
+    if (obj[x] > max) {
+      max = obj[x];
+      finalYear = x;
+    }
+  }
+  return parseInt(finalYear);
 }
 
 // === TEST YOURSELF ===

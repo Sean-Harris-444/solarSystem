@@ -6,9 +6,20 @@ import { data } from "../data/data";
 
 export function findPlanetNameByMoon(data, moonName) {
   // Your code goes here...
+  let foundMoonName = data.planets
+    .filter(moon => {
+      return moon.moons !== undefined;
+    })
+    .find(moon2 => {
+      // console.log(moon2.name);
+      return moon2.moons.find(thisMoon => {
+        // console.log(thisMoon);
+        return thisMoon === moonName;
+      });
+    });
+  let finalVar = foundMoonName.name;
+  return finalVar;
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"
