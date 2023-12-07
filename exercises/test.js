@@ -345,27 +345,21 @@ const data = {
   ],
 };
 
-function getGreatestDiscoveryYear(data) {
-  let years = data.asteroids.map(item => {
-    return item.discoveryYear;
-  });
-  const obj = {};
-  let max = 0;
-  let finalYear = null;
-  for (let year of years) {
-    if (obj[year]) {
-      obj[year]++;
-    } else {
-      obj[year] = 1;
-    }
-  }
-  for (let x in obj) {
-    if (obj[x] > max) {
-      max = obj[x];
-      finalYear = x;
-    }
-  }
-  return parseInt(finalYear);
+function getOrbitalPeriodsSum(data) {
+  // Your code goes here...
+  return data.asteroids
+    .map(time => time.orbitalPeriod)
+    .reduce((acc, val) => acc + val);
 }
 
-console.log(getGreatestDiscoveryYear(data));
+console.log(getOrbitalPeriodsSum(data));
+
+export function getOrbitalPeriodsSum(data) {
+  // Your code goes here...
+  let total = 0;
+  let findTotal = data.asteroids.map(value => {
+    return value.orbitalPeriod;
+  });
+  findTotal.forEach(n => (total += n));
+  return total;
+}

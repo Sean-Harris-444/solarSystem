@@ -6,16 +6,10 @@ import { data } from "../data/data";
 
 export function allPlanetsMoonsCount(data) {
   // Your code goes here...
-  let total = 0;
-  let findTotal = data.planets
-    .map(value => {
-      return value.moonsCount;
-    })
-    .filter(value2 => {
-      return value2 != undefined;
-    });
-  findTotal.forEach(n => (total += n));
-  return total;
+  return data.planets
+    .map(moons => moons.moonsCount)
+    .filter(nonDef => nonDef !== undefined)
+    .reduce((acc, val) => acc + val);
 }
 
 // === TEST YOURSELF ===
